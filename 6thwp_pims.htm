@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body{ background-color: whitesmoke;
+      }
+        #myDropDown
+      * {
+        box-sizing: border-box;
+      }
+
+      .myinput1 {
+        height:30px;
+        min-width: 40%;
+        max-width: 100%;
+        font-size: 16px;
+        padding: 12px 20px 12px 40px;
+        border: 1px solid #ddd;
+        margin-bottom: 7px;
+        -webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
+
+      }
+     .div1 {
+        padding: 0;
+        margin: -1px;
+        width: 100%;
+        height: 100%;
+      }
+
+      .click-button  {
+        border-radius: 20px;
+        margin-bottom: 10px;
+        margin-left: 30px;
+        border: none;
+        min-width: 40%;
+        max-width: 100%;
+        height:50px;
+        text-align:center;  
+        background-color:#6495ED;
+        padding: 12px 20px 12px 20px;
+        text-decoration: none;
+        font-size: 25px;
+        color: black;
+        display: block;
+        cursor: pointer;
+        -webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
+  
+      }
+
+      .click-button:hover {
+        opacity: 0.6;
+      }
+      .show {
+        display: block;
+      }
+      
+      .modal {
+       display: none; /* Hidden by default */
+       position: fixed; /* Stay in place */
+       z-index: 1; /* Sit on top */
+       padding-top: 200px; /* Location of the box */
+       left: 0;
+       top: 0;
+       width: 100%; /* Full width */
+       height: 100%; /* Full height */
+       overflow: auto; /* Enable scroll if needed */
+       background-color: rgb(0,0,0); /* Fallback color */
+       background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+      
+      }
+      /* Modal Content */
+      .modal-content {
+        font-weight: bold;
+       font-size: 20px;
+       text-align: left;
+       background-color: #fefefe;
+       margin: auto;
+       padding: 40px;
+       width: 400px;
+       height:100px;
+       
+      }
+
+      /* The Close Button */
+      .close {
+       color: #aaaaaa;
+       float: right;
+       font-size: 30px;
+       font-weight: bold;
+       }
+
+
+      .close:hover,
+      .close:focus {
+      color: red;
+      text-decoration: none;
+      cursor: pointer;
+      }
+
+      /* Button used to open the chat form  */
+.open-button {
+  background-color:#C71585;
+  color:white;
+  border-radius: 20px;
+  border: 2px solid #C71585;
+  cursor: pointer;
+  position: fixed;
+  bottom: 23px;
+  width: 160px;
+  height: 80px;
+  float: left;
+  left: 660px;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
+  
+
+}
+.open-button:hover,
+.open-button:focus {
+  background-color: rgb(170, 17, 119);
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 360px;
+   border: 3px solid whitesmoke;
+  z-index: 9;
+}
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: snow;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 70%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: whitesmoke;
+  resize: none;
+  min-height: 200px;
+}
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+/*All inputs inside the contact form */
+.input1  {
+  font-size: 15px;
+  width: 70%;
+  height: 50px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid black;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
+}
+/* Set a style for button outside form */
+.button1 {
+  margin: 15px;
+  position: absolute;
+  background-color:#6495ED;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 30px;
+  border-radius: 50%;
+  float:right;
+  top:0px;
+  width: 55px;
+  height:55px;
+  left: 400px;
+}
+
+/* Set a style for button insideside form */
+.button2 {
+  background-color: rgb(57, 139, 36);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  width:100px;
+}
+button:hover {
+  opacity: 0.8;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+.container {
+  padding: 26px;
+}
+/* The Modal of form (background) */
+.modalform {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-contentform {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 50%; /* Could be more or less, depending on screen size */
+}
+/* The Close Button (x) */
+.closeform {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.closeform:hover,
+.closeform:focus {
+  color: red;
+  cursor: pointer;
+}
+
+</style>
+</head>
+
+  
+  <body>
+
+    <div style="margin-bottom:10px;">
+ <h1 style="font-size:50px; color:black; margin-bottom: 5px ; margin-top: 1px; margin-left: 70px;">Phonebook<span style="font-size:50px;">&#128222;</span></h1>
+   
+      <input class="myinput1" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name" />
+    </div>
+
+    <div id="demo" class="div1"></div>
+
+    <button class="open-button" onclick="openForm()"><span style='font-size:60px;color:white; padding-bottom: 20px;'>&#9993;</span></button>
+
+    <div class="chat-popup" id="myForm">
+     <form action="/action_page.php" class="form-container">
+     <h1>Message box</h1>
+
+     <label for="msg"><b>Message</b></label>
+     <textarea placeholder="Type message.." name="msg" required></textarea>
+
+    <button type="submit" class="btn">Send</button>
+     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+     </form>
+    </div>
+
+    <button class="button1" onclick="document.getElementById('id01').style.display='block'">+</button>
+
+<div id="id01" class="modalform">
+  
+  <form class="modal-contentform">
+    <div class="imgcontainer">
+     <span onclick="document.getElementById('id01').style.display='none'" class="closeform" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+      <label style="font-size: 25px;" for="name"><b>Add Name</b></label><br>
+      <input id="name" class="input1" type="text" value="" placeholder="Enter name" name="name" required><br>
+
+      <label style="font-size: 25px;" for="num"><b>Add Number</b></label><br>
+      <input id="num" class="input1" type="number" value="" placeholder="Enter Number" name="num" required><br>
+      
+       <label style="font-size: 25px;" for="detail"><b>Add Detail</b></label><br>
+      <input id="detail" class="input1" type="text" value="" placeholder="Enter Detail" name="detail" required><br>
+        
+      <button class="button2" type="submit" onclick="function_pushArray()">Create</button>
+      </div>
+  </form>
+</div>
+
+  
+    <script>
+      /* Array of arrays */
+      var data = [
+        ["A", "123408", "School friend"],
+        ["B", "300458", "Uncle"],
+        ["C", "353345", "Father"],
+        ["D", "561114", "Mother"],
+        ["E", "6222782", "Best friend"],
+        ["F", "2666431", "Teacher"],
+        ["G", "3450430", "Sister"],
+        ["H", "2284326", "Shopkeeper"],
+        ["I", "2301423", "Sister's friend"],
+        ["J", "1233321", " Boyfriend"],
+        ["K", "7877668", "Colleague"],
+        ["L", "1567237", "Cousin"],
+        ["M", "8409976", "Brother-in-law"],
+        ["N", "2265754", "Annie"],
+        ["O", "2153451", "Father's friend"],
+        ["P", "1231230", "Aunt"],
+        ["Q", "4564565", "Teacher"],
+        ["R", "2879382", "John"]
+      ];
+
+      
+      /* Loop to generate the Contact Name */
+      for (var i = 0; i < data.length; i++) {
+        
+        document.getElementById("demo").innerHTML += `<button onclick="dropDownFunction(${i})" class="click-button">`
+         + data[i][0] + "</button>" + '<div id="myDropDown' + i + '" class="modal">' +
+          '<div class="modal-content">' +
+           `<span onclick="closefunction(${i})" class="close">&times;</span>` +
+           "<span style='font-size:70px; float:right;'>&#128100;</span>" +
+        data[i][1] + "<br> <br>" + data[i][2] + "</div></div>";
+        }
+        
+     
+      function myFunction() {
+        var input, filter, div1, btn, a, i, txtValue;
+        input = document.getElementById("myInput");
+       filter = input.value.toUpperCase();
+        div1 = document.getElementById("demo");
+        btn = div1.getElementsByTagName("button");
+
+        
+        for (i = 0; i < data.length; i++) {
+          a = btn[i];
+          txtValue = a.textContent || a.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            btn[i].style.display = "";
+            
+          } else {
+            btn[i].style.display = "none";
+           
+          }
+        }
+      }
+
+       /* Use this function to click on the button to get model box */
+      function dropDownFunction(serialNo) {
+        for (i = 0; i < data.length; i++) {
+        document.getElementById(`myDropDown${i}`).classList.remove('show'); }
+        var x = document.getElementById(`myDropDown${serialNo}`);
+        x.style.display = "block"; 
+      }
+      function closefunction(serialNo) {
+       var close = document.getElementById(`myDropDown${serialNo}`);
+       close.style.display ="none";
+        }
+
+        function openForm() {
+        document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+        }
+
+        // Get the modal
+var modalform = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modalform) {
+        modalform.style.display = "none";
+    }
+}
+
+function function_pushArray() {
+  document.getElementById("id01").style.display = "none";
+  var a = document.getElementById("name");
+  var b = document.getElementById("num");
+  var c = document.getElementById("detail");
+  data.push([a.value,b.value,c.value]);
+
+ var n = data.length-1;
+  document.getElementById("demo").innerHTML += `<button onclick="dropDownFunction(${n})" class="click-button">`
+         + data[n][0] + "</button>" + '<div id="myDropDown' + n + '" class="modal">' +
+          '<div class="modal-content">' +
+           `<span onclick="closefunction(${n})" class="close">&times;</span>` +
+           "<span style='font-size:70px; float:right;'>&#128100;</span>" +
+        data[n][1] + "<br> <br>" + data[n][2] + "</div></div>";
+  a.value = "";
+  b.value = "";
+  c.value = ""; 
+}
+    </script>
+  </body>
+</html>
+     
